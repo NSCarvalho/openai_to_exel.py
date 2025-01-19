@@ -1,0 +1,5189 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Cleva Channels life - Policy management",
+    "description": "This document describes all REST endpoints of the Cleva Channels life - Policy management.  <p>All information contained herein is, and shall remain, the exclusive property of Inetum CLSW - Software Portugal, S.A. The intellectual and technical concepts contained herein are proprietary of Inetum CLSW and are protected by copyright law. It is strictly forbidden to disseminate, reproduce, transmit, distribute or otherwise use in any way the information and materials contained herein, unless an explicit and express prior written permission is obtained from Inetum CLSW - Software Portugal, S.A.</p><p>@2018-2025 Inetum CLSW</p>",
+    "version": "99.9"
+  },
+  "servers": [
+    {
+      "url": "/i2s-psm/services/v2",
+      "description": "Cleva Policy Management"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Policy management",
+      "description": "Services related to the policy management"
+    }
+  ],
+  "paths": {
+    "/config/endorsement-types/{endorsementTypeId}/endorsement-type-configs": {
+      "post": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "Create a new endorsement type configuration for a specific channel",
+        "operationId": "ConfigRestService_addEndorsementTypeConfig",
+        "parameters": [
+          {
+            "name": "endorsementTypeId",
+            "in": "path",
+            "description": "The id of the endorsement type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The new configuration information",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EndorsementTypeConfigCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EntityRestResponsePt.i2s.psm.services.beans.EndorsementTypeConfig"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/endorsement-types/{endorsementTypeId}/endorsement-type-configs/{id}": {
+      "put": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "Update a given endorsement type configuration",
+        "operationId": "ConfigRestService_updateEndorsementTypeConfig",
+        "parameters": [
+          {
+            "name": "endorsementTypeId",
+            "in": "path",
+            "description": "The id of the endorsement type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the endorsement type configuration that will be updated",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The new configuration information",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EndorsementTypeConfigCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EntityRestResponsePt.i2s.psm.services.beans.EndorsementTypeConfig"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "Delete an endorsement type configuration",
+        "operationId": "ConfigRestService_deleteEndorsementTypeConfig",
+        "parameters": [
+          {
+            "name": "endorsementTypeId",
+            "in": "path",
+            "description": "The id of the endorsement type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the endorsement type configuration that will be deleted",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.response.GenericResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/endorsement-types/{endorsementTypeId}": {
+      "get": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "Get a endorsement type",
+        "operationId": "EndorsementRestService_getEndorsementTypes",
+        "parameters": [
+          {
+            "name": "endorsementTypeId",
+            "in": "path",
+            "description": "The id of the endorsement type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EntityRestResponsePt.i2s.psm.services.beans.EndorsementType"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/endorsement-type-configs": {
+      "get": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "List all endorsement type configurations for all endorsement types",
+        "operationId": "ConfigRestService_getEndorsementTypeConfigs",
+        "parameters": [
+          {
+            "name": "channelId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "printOption",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tenantId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fieldsRequired",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "hasScheduling",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "hasSchedulingOffset",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "hasDayEarlier",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "workflowScopeType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "workflowScopeKey",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "productCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endorsementTypeId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.services.beans.DataRestResponsePt.i2s.psm.services.beans.EndorsementTypeConfig"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/config/endorsement-types": {
+      "get": {
+        "tags": [
+          "Configurations"
+        ],
+        "summary": "List all endorsement types",
+        "operationId": "ConfigRestService_getEndorsementTypes",
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.services.beans.DataRestResponsePt.i2s.psm.services.beans.EndorsementType"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/endorsement/{endorsementId}": {
+      "get": {
+        "tags": [
+          "Endorsements"
+        ],
+        "summary": "Get a endorsement type",
+        "operationId": "EndorsementRestService_getEndorsement",
+        "parameters": [
+          {
+            "name": "endorsementId",
+            "in": "path",
+            "description": "The id of the endorsement",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EntityRestResponsePt.i2s.psm.services.beans.Endorsement"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/endorsement/{endorsementId}/status": {
+      "patch": {
+        "tags": [
+          "Endorsements"
+        ],
+        "summary": "Update endorsement status",
+        "operationId": "EndorsementRestService_updateEndorsementStatus",
+        "parameters": [
+          {
+            "name": "endorsementId",
+            "in": "path",
+            "description": "The id of the endorsement",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The new status ",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.UpdateEndorsement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EntityRestResponsePt.i2s.psm.services.beans.Endorsement"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/life/{policyId}/funds/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Switch policy funds",
+        "description": "This service allows switching the sum insured between funds or changing the policy funds distribution.\r\n\r\nNote: Currently, the service only supports buying and selling funds and does not support changes to them.",
+        "operationId": "WS753",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters. ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Switch policy funds request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.SwitchFundsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/billing/bank-account/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to update policy collection account",
+        "description": "This service allows creating an endorsement to update the collection account of a policy. \n\nThis API instantiates a process/flow that orchestrates the integration with Cleva Life. \n\nIt is applicable to risk life individual products.",
+        "operationId": "WS1265",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters. ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update billing of a policy request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.UpdateBillingBankAccountRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/billing/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to update policy collection",
+        "description": "This service allows creating an endorsement to update the collection details of a policy. \n\nThis API instantiates a process/flow that orchestrates the integration with Cleva Life. \n\nIt is applicable to risk life individual products.",
+        "operationId": "WS899",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The policy id to update",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.UpdatePolicyBillingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/billing/date/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to update policy collection date",
+        "description": "This service allows creating an endorsement to update the collection date of a policy. \n\nThis API instantiates a process/flow that orchestrates the integration with Cleva Life. \n\nIt is applicable to risk life individual products.",
+        "operationId": "WS1258",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The policy id to update",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.UpdateBillingDateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/premium/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Update sum insured",
+        "description": "This service allows updating the sum insured and/or the premium instalment of a policy.",
+        "operationId": "WS1259",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Premium installment update request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.UpdatePremiumRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/premium/installment/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to update policy premium instalment",
+        "description": "This service allows creating an endorsement to update the premium instalment of a policy. \n\nThis web service instantiates a process/flow that orchestrates the integration with Cleva Life. \n\nIt is applicable to risk life individual products.",
+        "operationId": "WS1094",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Premium installment update request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.UpdatePremiumInstallmentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/insured-people/add-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to add an insured person to a policy",
+        "description": "This service allows creating a request to add an insured person to a policy.",
+        "operationId": "WS1109",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The policy id to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Add an Insured Person to an insured person request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.AddInsuredPersonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.aip.response.AddInsuredPersonResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/insured-people/{personId}/cancel-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to exclude insured person from policy",
+        "description": "This service allows creating an endorsement to exclude an insured person from a policy. \n\nThis API instantiates a process/flow that orchestrates the integration with Cleva Life. \n\nThe approval tasks are displayed in the task manager. These tasks can be executed: (1) in the task manager's front-end; (2) using the service that allows executing an action for a task service. \n\nIt is applicable to risk life group products.",
+        "operationId": "WS1262",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The policy id to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "Insured person id to be excluded",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Exclude person request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.ExcludePersonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/insured-people/add-request/{requestId}": {
+      "get": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Retrieve add insured person endorsement",
+        "description": "This service allows creating a request to add an insured person to a policy.",
+        "operationId": "WS1261",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The policy id to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "The policy id to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.aip.response.AddInsuredPersonResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      },
+      "patch": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Retrieve a request to add an insured person into a policy",
+        "operationId": "WS784",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The policy id to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "The policy id to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Add an Insured Person to an insured person request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.AddInsuredPersonUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.aip.response.AddInsuredPersonResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/life/{policyId}/insured-people/add-request/{requestId}/insuredpeople/{entityId}": {
+      "get": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Retrieve insured person from a request to add an insured person into a policy",
+        "operationId": "WS1326",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "Policy id ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "Request id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "entityId",
+            "in": "path",
+            "description": "Insured Person id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.aip.response.InsuredPersonResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Retrieve insured person from a request to add an insured person into a policy",
+        "operationId": "WS1327",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "Policy id ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "Request id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "entityId",
+            "in": "path",
+            "description": "Insured Person id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Insured Person to be patched",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.UpdateInsuredPersonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.aip.response.InsuredPersonResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/life/{policyId}/insured-people/{personId}/beneficiaries/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsment to update the beneficiaries of a person in a policy",
+        "description": "This service allows creating a new request to update the beneficiaries of a person in a policy.",
+        "operationId": "WS1116",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The policy id to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "Insured person id to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "memberId",
+            "in": "query",
+            "description": "Membership number",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated person request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.InsuredPersonBeneficiaryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/insured-people/{personId}/sum-insured/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to update sum insured of insured person of a policy",
+        "description": "This service allows creating an endorsement to update the sum insured of an insured person of a specific policy. \n\nThis API instantiates an approval or risk assessment process/flow, according to the sum insured update amount, and integrates with Cleva Life. \n\nThe approval or risk assessment tasks are displayed in the task manager. These tasks can be executed: (1) in the task manager's front-end; (2) using the service that allows executing an action for a task service. \n\nIt is applicable to risk life group products.",
+        "operationId": "WS1242",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The policy id to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "Insured person id to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update sum insured in a person request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.UpdatePersonSumInsuredRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/policies/{policyId}/change-policy": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to perform multiple changes to the policy.",
+        "description": " Create endorsement to perform multiple changes to the policy.",
+        "operationId": "WS1224",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Multiple policy changes request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.PolicyMultipleChangesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/notice-address/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to update policy notice address",
+        "description": "This service allows creating an endorsement to update the notice address of a policy. This API instantiates a process/flow that orchestrates the integration with Cleva Life. \n\nIt is applicable to risk life individual products.",
+        "operationId": "WS1117",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Notice address object request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.UpdateNoticeAddressRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/cancel-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to cancel policy",
+        "description": "This service allows creating an endorsement to cancel a policy. \n\nThis API instantiates an approval process/flow that is integrated with Cleva Life. \n\nThe approval tasks are displayed in the task manager. These tasks can be executed: \n(1) in the task manager's front-end \n\n(2) using the service that allows executing an action for a task service \n\nThis service is applicable to risk life individual products.",
+        "operationId": "WS1260",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Cancel policy request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.i2s.psm.services.beans.CancelPolicyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/sum-insured/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to update policy sum insured",
+        "description": "This service allows creating an endorsement to update the sum insured of a policy. \n\nThis API instantiates a process/flow that orchestrates the integration with Cleva Life. \n\nThe approval tasks are displayed in the task manager. These tasks can be executed: (1) in the task manager's front-end; (2) using the service that allows executing an action for a task service. \n\nApplicable to risk life individual products.",
+        "operationId": "WS1332",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters. ",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update policy request",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.UpdateSumInsuredRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/life/{policyId}/beneficiaries/change-request": {
+      "post": {
+        "tags": [
+          "Policy management"
+        ],
+        "summary": "Create endorsement to update policy beneficiaries",
+        "description": "This service allows creating an endorsement to update the policy's beneficiaries. \n\nThis API instantiates an approval process/flow that integrates with Cleva Life. \n\nThe approval tasks are displayed in the task manager. These tasks can be executed: (1) in the task manager's front-end; (2) using the service that allows executing an action for a task service. \n\nIt is applicable to risk life individual products.",
+        "operationId": "WS1110",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "The id of the policy. The maximum length is 8 characters.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Service request object",
+          "content": {
+            "application/json; charset=UTF-8": {
+              "schema": {
+                "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.BeneficiaryEndorsementRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "x-public": "true"
+      }
+    },
+    "/management/cache": {
+      "get": {
+        "tags": [
+          "Cache Management"
+        ],
+        "summary": "Retrieve cache names",
+        "description": "Retrieves a list of all cache names in the current environment.",
+        "operationId": "WS1373",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/pt.inetum.foundation.api.management.cache.beans.CacheManagerListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cache Management"
+        ],
+        "summary": "Delete all caches",
+        "description": "Deletes all caches in the current environment.",
+        "operationId": "WS1371",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.response.GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/cache/{cacheName}": {
+      "delete": {
+        "tags": [
+          "Cache Management"
+        ],
+        "summary": "Delete cache by name",
+        "description": "Deletes a specific cache by its name in the current environment.",
+        "operationId": "WS1372",
+        "parameters": [
+          {
+            "name": "cacheName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.response.GenericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "com.i2s.foundation.ws.beans.I2SMessage": {
+        "required": [
+          "code",
+          "developerMessage",
+          "type",
+          "userMessage"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Message severity",
+            "example": "INFO",
+            "enum": [
+              "TRACE",
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "description": "Message code.",
+            "example": "INF0000"
+          },
+          "locale": {
+            "type": "string",
+            "description": "The locale of the occurrence.",
+            "example": "pt_PT"
+          },
+          "userMessage": {
+            "type": "string",
+            "description": "User friendly message.",
+            "example": "The entity was successfully created."
+          },
+          "developerMessage": {
+            "type": "string",
+            "description": "Detailed message. Not suitable to be presented in the user interface.",
+            "example": "The entity 123 was successfully created."
+          }
+        },
+        "description": "List of messages containing infomations, warnings or errors ocurred processing the request.",
+        "enum": [
+          "TRACE, DEBUG, INFO, WARN, ERROR, FATAL"
+        ]
+      },
+      "com.i2s.foundation.ws.beans.I2SStatus": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Severity of the response.",
+            "example": "INFO",
+            "enum": [
+              "TRACE",
+              "DEBUG",
+              "INFO",
+              "WARN",
+              "ERROR",
+              "FATAL"
+            ]
+          },
+          "messages": {
+            "type": "array",
+            "description": "List of messages containing infomations, warnings or errors ocurred processing the request.",
+            "items": {
+              "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SMessage"
+            },
+            "enum": [
+              "TRACE, DEBUG, INFO, WARN, ERROR, FATAL"
+            ]
+          }
+        },
+        "description": "The operation status."
+      },
+      "java.time.LocalTime": {
+        "type": "object",
+        "properties": {
+          "hour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minute": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "second": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nano": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.EndorsementTypeConfig": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "printOption": {
+            "type": "string"
+          },
+          "endorsementTypeId": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "fieldsRequired": {
+            "type": "boolean"
+          },
+          "scheduling": {
+            "$ref": "#/components/schemas/java.time.LocalTime"
+          },
+          "dayEarlier": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workflowScopeType": {
+            "type": "string"
+          },
+          "workflowScopeKey": {
+            "type": "string"
+          },
+          "schedulingOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productCode": {
+            "type": "string"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.EntityRestResponsePt.i2s.psm.services.beans.EndorsementTypeConfig": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EndorsementTypeConfig"
+          },
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.EndorsementTypeConfigCreateRequest": {
+        "type": "object",
+        "properties": {
+          "channel": {
+            "type": "string"
+          },
+          "printOption": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "fieldsRequired": {
+            "type": "boolean"
+          },
+          "scheduling": {
+            "$ref": "#/components/schemas/java.time.LocalTime"
+          },
+          "schedulingOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dayEarlier": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workflowScopeType": {
+            "type": "string"
+          },
+          "workflowScopeKey": {
+            "type": "string"
+          },
+          "productCode": {
+            "type": "string"
+          }
+        }
+      },
+      "com.i2s.foundation.ws.beans.response.GenericResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.EndorsementType": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "requiresPerson": {
+            "type": "boolean"
+          },
+          "entity": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "coreId": {
+            "type": "string"
+          },
+          "configs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EndorsementTypeConfig"
+            }
+          },
+          "coreIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.EntityRestResponsePt.i2s.psm.services.beans.EndorsementType": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EndorsementType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.DataRestResponsePt.i2s.psm.services.beans.EndorsementTypeConfig": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EndorsementTypeConfig"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "start": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "type": "string"
+          },
+          "order": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.DataRestResponsePt.i2s.psm.services.beans.EndorsementType": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EndorsementType"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "start": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "type": "string"
+          },
+          "order": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.Endorsement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "policyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "businessKey": {
+            "type": "string"
+          },
+          "productClass": {
+            "type": "string"
+          },
+          "productVersion": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "branch": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          },
+          "multiChange": {
+            "type": "string"
+          },
+          "endorsementDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.EndorsementDetail"
+            }
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.EndorsementDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "insuredPersonId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "memberId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "taxId": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "endorsementType": {
+            "type": "string"
+          },
+          "effectiveDate": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "channelApp": {
+            "type": "string"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.EntityRestResponsePt.i2s.psm.services.beans.Endorsement": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.Endorsement"
+          },
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.UpdateEndorsement": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.PolicyUpdateResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          },
+          "data": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.PolicyUpdateResponse"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.PolicyUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "description": "The request id that was generated"
+          },
+          "fulfilled": {
+            "type": "boolean",
+            "description": "Indicates whether the request was fulfilled or is pending further actions"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.Fund": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code of the fund"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Invested amount"
+          },
+          "percent": {
+            "type": "number",
+            "description": "Percentage of invested amount"
+          }
+        },
+        "description": "Investment fund"
+      },
+      "pt.i2s.psm.services.beans.SwitchFundsRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to update the premium installment of a policy",
+            "format": "date-time"
+          },
+          "funds2Sell": {
+            "type": "array",
+            "description": "List of funds to sell.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.Fund"
+            }
+          },
+          "funds2Buy": {
+            "type": "array",
+            "description": "List of funds to buy.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.Fund"
+            }
+          },
+          "funds2Change": {
+            "type": "array",
+            "description": "List of funds to change.\r\n\r\nNote: This field is no available in the current version.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.Fund"
+            }
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.UpdateBillingBankAccountRequest": {
+        "required": [
+          "bankAccount",
+          "branch",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to exclude the insured person of a policy",
+            "format": "date-time"
+          },
+          "bankAccount": {
+            "type": "string",
+            "description": "The new billing account for the policy"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.UpdatePolicyBillingRequest": {
+        "required": [
+          "branch",
+          "collectionType",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Date on which the request should take effect."
+          },
+          "collectionType": {
+            "type": "string",
+            "description": "Method of payment.",
+            "enum": [
+              "TREASURY",
+              "BANK_COLLECTION",
+              "PAYMENTS_MANAGEMENT",
+              "AGENT"
+            ]
+          },
+          "bankAccount": {
+            "type": "string",
+            "description": "The new billing account for the policy."
+          },
+          "collectorEntityId": {
+            "type": "integer",
+            "description": "The new collection entity for the policy.",
+            "format": "int32"
+          },
+          "paymentsDay": {
+            "type": "integer",
+            "description": "Day of month where premium payments should take place.",
+            "format": "int32"
+          },
+          "print": {
+            "type": "string",
+            "description": "Print option.",
+            "enum": [
+              "NO_PRINTING",
+              "IMMEDIATE_PRINTING",
+              "BATCH_PRINTING",
+              "NO_PRINTING, IMMEDIATE_PRINTING, BATCH_PRINTING"
+            ]
+          },
+          "payerId": {
+            "type": "integer",
+            "description": "Policy premium payer Id.",
+            "format": "int32"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.UpdateBillingDateRequest": {
+        "required": [
+          "branch",
+          "day",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to exclude the insured person of a policy",
+            "format": "date-time"
+          },
+          "day": {
+            "type": "integer",
+            "description": "Indicates new billing day",
+            "format": "int32"
+          },
+          "month": {
+            "type": "integer",
+            "description": "Indicates new billing month",
+            "format": "int32"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.UpdatePremiumRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "premium": {
+            "type": "number",
+            "description": "The new policy premium installment to be updated"
+          },
+          "premiumInstallment": {
+            "type": "string",
+            "description": "The new policy premium installment to be updated"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Policy premium effective date to be update",
+            "format": "date-time"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.UpdatePremiumInstallmentRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "loginUser",
+          "premiumInstallment",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to update the premium installment of a policy",
+            "format": "date-time"
+          },
+          "premiumInstallment": {
+            "type": "string",
+            "description": "The new premium installment to be updated on the policy"
+          },
+          "dateNextReceipt": {
+            "type": "integer",
+            "description": "Rule for calculating the date of the next receipt (1: Next instalment date after effective date. 2: After the last periodic premium (default value). 3: On effective date )",
+            "format": "int32"
+          },
+          "createNextReceipt": {
+            "type": "boolean",
+            "description": "Indication of automatic creation of the next receipt"
+          },
+          "createMissingReceipts": {
+            "type": "boolean",
+            "description": "Indication of automatic creation of the missing receipts"
+          }
+        }
+      },
+      "pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.aip.response.AddInsuredPersonResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          },
+          "data": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.response.AddInsuredPersonResponse"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.aip.request.AdditionalInfos": {
+        "required": [
+          "code",
+          "type",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Information code",
+            "format": "int32"
+          },
+          "value": {
+            "type": "string",
+            "description": "Information value.    Note: It is the same field used for indicating the value of short and long additional information fields.    The size must match the information type (short additional information = 8 characters, long additional information = 30 characters). "
+          },
+          "type": {
+            "type": "string",
+            "description": "Code identifying the additional information type. Info8: For short additional information fields.    Info30: For long additional information fields.",
+            "enum": [
+              "INFO8",
+              "INFO30"
+            ]
+          }
+        },
+        "description": "AdditionalInfo object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.AdditionalValues": {
+        "required": [
+          "code",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Code identifying the additional value",
+            "format": "int32"
+          },
+          "value": {
+            "type": "number",
+            "description": "Amount of the additional value"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "AdditionalValues object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.Address": {
+        "required": [
+          "country",
+          "postcode",
+          "postcodeTown",
+          "street",
+          "town"
+        ],
+        "type": "object",
+        "properties": {
+          "street": {
+            "type": "string",
+            "description": "Street's name"
+          },
+          "town": {
+            "type": "string",
+            "description": "Town or city"
+          },
+          "postcode": {
+            "type": "string",
+            "description": "Postcode"
+          },
+          "postcodeTown": {
+            "type": "string",
+            "description": "Postcode town or city.",
+            "example": "PORTO"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country code.",
+            "example": "prt"
+          },
+          "attributes": {
+            "type": "array",
+            "description": "Predefined id of a person attribute.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Attribute"
+            }
+          },
+          "street2": {
+            "type": "string"
+          }
+        },
+        "description": "Address object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.Attribute": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Attribute code.",
+            "example": "E001"
+          },
+          "value": {
+            "type": "string",
+            "description": "Attribute value.",
+            "example": "Attribute"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "Attribute object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.Beneficiary": {
+        "required": [
+          "percent",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "beneficiaryPersonId": {
+            "type": "integer",
+            "description": "Beneficiary's person id. Note: One of 'beneficiaryPersonId',  'beneficiaryId' or 'personData' must be indicated",
+            "format": "int32",
+            "example": 1
+          },
+          "beneficiaryId": {
+            "type": "integer",
+            "description": "Beneficiary's id. Note: One of 'beneficiaryPersonId',  'beneficiaryId' or 'personData' must be indicated",
+            "format": "int32",
+            "example": 1
+          },
+          "personData": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.PersonData"
+          },
+          "coverageCode": {
+            "type": "integer",
+            "description": "Coverage code. Note: If not specified, the beneficiary will be associated to all coverages.",
+            "format": "int32",
+            "example": 1
+          },
+          "type": {
+            "type": "string",
+            "description": "type of clause. Death, Life, Disability.",
+            "example": "DEATH",
+            "enum": [
+              "DEATH",
+              "LIFE",
+              "DISABILITY"
+            ]
+          },
+          "percent": {
+            "type": "number",
+            "description": "Percentage to be received by this beneficiary.\r\n\r\nNote: All percentages of the various beneficiaries of each type must total 100%.",
+            "example": 100
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Beneficiary's family relationship with the insured person.",
+            "example": "Brother"
+          },
+          "irrevocable": {
+            "type": "boolean",
+            "description": "If identified, the beneficiary cannot be changed without his consent",
+            "example": false
+          }
+        },
+        "description": "Beneficiary object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.BeneficiaryClause": {
+        "required": [
+          "code",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Code identifying the clause",
+            "format": "int32",
+            "example": 12
+          },
+          "type": {
+            "type": "string",
+            "description": "type of clause: Death, Life, Global and Disability.",
+            "example": "DEATH",
+            "enum": [
+              "DEATH",
+              "LIFE",
+              "GLOBAL",
+              "DISABILITY"
+            ]
+          },
+          "coverageCode": {
+            "type": "integer",
+            "description": "Coverage code. Note: If not specified, the beneficiary clause will be associated to all coverages.",
+            "format": "int32",
+            "example": 12
+          }
+        },
+        "description": "BeneficiaryClause object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.ContextAddressFields": {
+        "type": "object",
+        "properties": {
+          "fieldId": {
+            "type": "string",
+            "description": "Predefined id of a person attribute."
+          },
+          "context": {
+            "type": "string",
+            "description": "Attribute context",
+            "example": "GENERAL"
+          },
+          "contextCode": {
+            "type": "string",
+            "description": "Attribute context code."
+          },
+          "address": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Address"
+          },
+          "value": {
+            "type": "string"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "ContextAddressFields object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.PersonData": {
+        "required": [
+          "independentEntrepreneur",
+          "name",
+          "personBusiness",
+          "taxIdNo"
+        ],
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "Party's external reference."
+          },
+          "name": {
+            "type": "string",
+            "description": "Party's name."
+          },
+          "taxIdNo": {
+            "type": "string",
+            "description": "Party's tax identification number"
+          },
+          "idDocumentType": {
+            "type": "string",
+            "description": "This parameter specifies the type of id document of a party. When creating a party, this parameter is mandatory, and together with the idDocumentValue and partyNationality parameters will generate the partyUniqueId parameter which will later allow searching for a party. "
+          },
+          "idDocumentValue": {
+            "type": "string",
+            "description": "This parameter specifies the party's id document value. When creating a party, this parameter is mandatory, and together with the partyNationality and idDocumentType parameters will generate the partyUniqueId parameter which will later allow searching for a party."
+          },
+          "partyUniqueId": {
+            "type": "string",
+            "description": "This parameter identifies and allows searching for a party. This id will initially be generated by concatenating three other parameters: idDocumentType, idDocumentValue, and partyNationality."
+          },
+          "idNo": {
+            "type": "string",
+            "description": "Party's national identification number (or equivalent)"
+          },
+          "birthDate": {
+            "type": "string",
+            "description": "Party's tax identification number"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Party's gender, if a natural person."
+          },
+          "maritalStatus": {
+            "type": "string",
+            "description": "Code identifying the marital status of the party, if a natural person."
+          },
+          "profession": {
+            "type": "string",
+            "description": "Code identifying the party's occupation, if a natural person. Note: This field is mandatory, but it may be empty."
+          },
+          "personBusiness": {
+            "type": "string",
+            "description": "Code identifying whether the party is a natural or a legal person. Individual(I): Natural person and Company(C): Legal person",
+            "example": "I",
+            "enum": [
+              "I",
+              "C"
+            ]
+          },
+          "honorific": {
+            "type": "string",
+            "description": "Party’s title, if a natural person.",
+            "example": "Mrs"
+          },
+          "independentEntrepreneur": {
+            "type": "boolean",
+            "description": "Indication if this party is a sole trader (individual entrepreneur)",
+            "example": false,
+            "default": false
+          },
+          "phoneNo": {
+            "type": "string",
+            "description": "Party's telephone number."
+          },
+          "mobileNo": {
+            "type": "string",
+            "description": "Party's mobile number"
+          },
+          "email": {
+            "type": "string",
+            "description": "Party's email address",
+            "example": "saraleite@example.pt"
+          },
+          "nationality": {
+            "type": "string",
+            "description": "Party's country code (nationality)"
+          },
+          "personAttributes": {
+            "type": "array",
+            "description": "Person Attributes",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Attribute"
+            }
+          },
+          "contextAddressFields": {
+            "type": "array",
+            "description": "Context-related user-definable party address attributes.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.ContextAddressFields"
+            }
+          }
+        },
+        "description": "PersonData object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.response.AddInsuredPersonResponse": {
+        "required": [
+          "branch",
+          "forChannel",
+          "insuredPeople",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "integer",
+            "description": "Id of the request",
+            "format": "int64"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the endorsement request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "status": {
+            "type": "string",
+            "description": "Request status of the endorsement request",
+            "enum": [
+              "PENDING",
+              "COMPLETED"
+            ]
+          },
+          "policyId": {
+            "type": "string",
+            "description": "Id of the Policy associated with the endorsement request"
+          },
+          "tenantId": {
+            "type": "string",
+            "description": "Tenant id of the endorsement request"
+          },
+          "businessKey": {
+            "type": "string",
+            "description": "Business key of the endorsement request"
+          },
+          "createDate": {
+            "type": "string",
+            "description": "Start date of the endorsement request",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "End date of the endorsement request",
+            "format": "date-time"
+          },
+          "effectiveDate": {
+            "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2})/",
+            "type": "string",
+            "description": "Date the change will take effect",
+            "format": "date-time"
+          },
+          "insuredPeople": {
+            "type": "array",
+            "description": "List of insured people to include in the policy",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.response.InsuredPersonResponse"
+            }
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency of monetary values.",
+            "example": "EUR"
+          }
+        },
+        "description": "AddInsuredPersonResponse object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.response.CoverageReasonResponse": {
+        "required": [
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Code identifying the reason for limiting the coverages or loading them",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the reason"
+          }
+        },
+        "description": "CoverageReasonResponse object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.response.CoverageResponse": {
+        "required": [
+          "code",
+          "startDate"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Coverage code",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the coverage. This is used for history purposes.",
+            "enum": [
+              "ACTIVE",
+              "REMOVED"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "description": "Coverage description"
+          },
+          "sumInsured": {
+            "type": "number",
+            "description": "Coverage sum insured"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Coverage start date. Format: YYYYMMDD."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Coverage end date. Format: YYYYMMDD."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Coverage duration",
+            "format": "int32"
+          },
+          "indexationType": {
+            "type": "string",
+            "description": "Type of price adjustment of the coverage (None, Fixed monetary value or Percentage of increase).",
+            "enum": [
+              "NONE",
+              "MONETARY",
+              "PERCENTAGE"
+            ]
+          },
+          "indexation": {
+            "type": "number",
+            "description": "Price adjustment of the coverage in percentage or absolute value"
+          },
+          "loadedCoverage": {
+            "type": "integer",
+            "description": "Identifies the code of the coverage that is loaded.",
+            "format": "int32"
+          },
+          "additionalValues": {
+            "type": "array",
+            "description": "Additional values of coverages",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.AdditionalValues"
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "description": "List of provisions limiting the coverage from specific risks.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.response.ExclusionResponse"
+            }
+          },
+          "coverageReasons": {
+            "type": "array",
+            "description": "Loading reason for coverage",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.response.CoverageReasonResponse"
+            }
+          },
+          "percentage": {
+            "type": "number",
+            "description": "Loading percentage applicable to risk coverage (loadedCoverage)"
+          },
+          "perThousand": {
+            "type": "number",
+            "description": "Loading perThousand applicable to risk coverage (loadedCoverage)"
+          }
+        },
+        "description": "CoverageResponse object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.response.ExclusionResponse": {
+        "required": [
+          "code",
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Code identifying the exclusion",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "description": "Exclusion description."
+          }
+        },
+        "description": "ExclusionResponse object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.response.InsuredPersonResponse": {
+        "required": [
+          "insuredPersonId",
+          "personData",
+          "personId",
+          "relationship",
+          "startDate"
+        ],
+        "type": "object",
+        "properties": {
+          "entityId": {
+            "type": "integer",
+            "description": "The entity id that was stored on the database and can be used for retrieving purposes",
+            "format": "int64"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the person",
+            "enum": [
+              "PENDING",
+              "ACCEPTED",
+              "REFUSED",
+              "CANCELED",
+              "INTEGRATING",
+              "INTEGRATION_ERROR"
+            ]
+          },
+          "personId": {
+            "type": "integer",
+            "description": "Person id. Note: One of 'personId', 'insuredPersonId' or 'personData' must be indicated",
+            "format": "int32"
+          },
+          "insuredPersonId": {
+            "type": "integer",
+            "description": "Insured person id. Note: One of 'personId', 'insuredPersonId' or 'personData' must be indicated",
+            "format": "int32"
+          },
+          "personData": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.response.PersonDataResponse"
+          },
+          "memberId": {
+            "type": "integer",
+            "description": "Member id. Note: If not specified, a new member will be created",
+            "format": "int32"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Type of relationship of this person as regards the insurance policy. Used only for group products."
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Policy member start date. Format: YYYYMMDD."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Policy member end date. Format: YYYYMMDD."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Policy member duration",
+            "format": "int32"
+          },
+          "sumInsured": {
+            "type": "number",
+            "description": "Policy member sum insured"
+          },
+          "coveragePackages": {
+            "type": "array",
+            "description": "List of coverage package ids",
+            "items": {
+              "type": "integer",
+              "description": "List of coverage package ids",
+              "format": "int32"
+            }
+          },
+          "coverages": {
+            "type": "array",
+            "description": "List of coverages",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.response.CoverageResponse"
+            }
+          },
+          "additionalValues": {
+            "type": "array",
+            "description": "List of additional values of the main coverage.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.AdditionalValues"
+            }
+          },
+          "additionalInfos": {
+            "type": "array",
+            "description": "List of additional information fields per product configuration.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.AdditionalInfos"
+            }
+          },
+          "beneficiaries": {
+            "type": "array",
+            "description": "List of beneficiaries of insured person",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Beneficiary"
+            }
+          },
+          "beneficiaryClauses": {
+            "type": "array",
+            "description": "List of beneficiaries clauses of insured person",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.BeneficiaryClause"
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "description": "List of provisions limiting the coverage from specific risks.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.response.ExclusionResponse"
+            }
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency of monetary values.",
+            "example": "EUR"
+          }
+        },
+        "description": "InsuredPersonResponse object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.response.PersonDataResponse": {
+        "required": [
+          "independentEntrepreneur",
+          "name",
+          "personBusiness",
+          "taxIdNo"
+        ],
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "Party's external reference."
+          },
+          "name": {
+            "type": "string",
+            "description": "Party's name."
+          },
+          "taxIdNo": {
+            "type": "string",
+            "description": "Party's tax identification number"
+          },
+          "idDocumentType": {
+            "type": "string",
+            "description": "This parameter specifies the type of id document of a party. When creating a party, this parameter is mandatory, and together with the idDocumentValue and partyNationality parameters will generate the partyUniqueId parameter which will later allow searching for a party. "
+          },
+          "idDocumentValue": {
+            "type": "string",
+            "description": "This parameter specifies the party's id document value. When creating a party, this parameter is mandatory, and together with the partyNationality and idDocumentType parameters will generate the partyUniqueId parameter which will later allow searching for a party."
+          },
+          "partyUniqueId": {
+            "type": "string",
+            "description": "This parameter identifies and allows searching for a party. This id will initially be generated by concatenating three other parameters: idDocumentType, idDocumentValue, and partyNationality."
+          },
+          "idNo": {
+            "type": "string",
+            "description": "Party's national identification number (or equivalent)"
+          },
+          "birthDate": {
+            "type": "string",
+            "description": "Party's tax identification number"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Party's gender, if a natural person."
+          },
+          "maritalStatus": {
+            "type": "string",
+            "description": "Code identifying the marital status of the party, if a natural person."
+          },
+          "profession": {
+            "type": "string",
+            "description": "Code identifying the party's occupation, if a natural person. Note: This field is mandatory, but it may be empty."
+          },
+          "personBusiness": {
+            "type": "string",
+            "description": "Code identifying whether the party is a natural or a legal person. Individual(I): Natural person and Company(C): Legal person",
+            "example": "I",
+            "enum": [
+              "I",
+              "C"
+            ]
+          },
+          "honorific": {
+            "type": "string",
+            "description": "Party’s title, if a natural person.",
+            "example": "Mrs"
+          },
+          "independentEntrepreneur": {
+            "type": "boolean",
+            "description": "Indication if this party is a sole trader (individual entrepreneur)",
+            "example": false,
+            "default": false
+          },
+          "phoneNo": {
+            "type": "string",
+            "description": "Party's telephone number."
+          },
+          "mobileNo": {
+            "type": "string",
+            "description": "Party's mobile number"
+          },
+          "email": {
+            "type": "string",
+            "description": "Party's email address",
+            "example": "saraleite@example.pt"
+          },
+          "nationality": {
+            "type": "string",
+            "description": "Party's country code (nationality)"
+          },
+          "personAttributes": {
+            "type": "array",
+            "description": "Person Attributes",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Attribute"
+            }
+          },
+          "contextAddressFields": {
+            "type": "array",
+            "description": "Context-related user-definable party address attributes.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.ContextAddressFields"
+            }
+          },
+          "professionDescription": {
+            "type": "string",
+            "description": "Description of the person's profession"
+          }
+        },
+        "description": "PersonDataResponse object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.Coverage": {
+        "required": [
+          "code",
+          "startDate"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Coverage code",
+            "format": "int32"
+          },
+          "sumInsured": {
+            "type": "number",
+            "description": "Coverage sum insured"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Coverage start date. Format: YYYYMMDD."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Coverage end date. Format: YYYYMMDD."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Coverage duration",
+            "format": "int32"
+          },
+          "indexationType": {
+            "type": "string",
+            "description": "Type of price adjustment of the coverage (None, Fixed monetary value or Percentage of increase).",
+            "enum": [
+              "NONE",
+              "MONETARY",
+              "PERCENTAGE"
+            ]
+          },
+          "indexation": {
+            "type": "number",
+            "description": "Price adjustment of the coverage in percentage or absolute value"
+          },
+          "additionalValues": {
+            "type": "array",
+            "description": "Additional values of coverages",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.AdditionalValues"
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "description": "List of provisions limiting the coverage from specific risks.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Exclusion"
+            }
+          },
+          "coverageReasons": {
+            "type": "array",
+            "description": "Loading reason for coverage",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.CoverageReason"
+            }
+          },
+          "percentage": {
+            "type": "number",
+            "description": "Loading percentage applicable to risk coverage (loadedCoverage)"
+          },
+          "perThousand": {
+            "type": "number",
+            "description": "Loading perThousand applicable to risk coverage (loadedCoverage)"
+          },
+          "paymentsDuration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lifeSumInsured": {
+            "type": "number"
+          },
+          "deathSumInsured": {
+            "type": "number"
+          },
+          "loadingCoverageReason": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "Coverage object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.CoverageReason": {
+        "required": [
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Code identifying the reason for limiting the coverages or loading them",
+            "format": "int32"
+          }
+        },
+        "description": "CoverageReason object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.Exclusion": {
+        "required": [
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Code identifying the exclusion",
+            "format": "int32"
+          }
+        },
+        "description": "Exclusion object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.AddInsuredPersonRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "insuredPeople",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2})/",
+            "type": "string",
+            "description": "Date the change will take effect",
+            "format": "date-time"
+          },
+          "insuredPeople": {
+            "type": "array",
+            "description": "List of insured people to include in the policy",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.InsuredPerson"
+            }
+          }
+        },
+        "description": "Add insured person endorsement object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.Address": {
+        "required": [
+          "country",
+          "postcode",
+          "street1",
+          "town"
+        ],
+        "type": "object",
+        "properties": {
+          "addressId": {
+            "type": "string",
+            "description": "Unique identification of the address.",
+            "example": "3259"
+          },
+          "street1": {
+            "type": "string",
+            "description": "Street, line 1.",
+            "example": "Av de Testes"
+          },
+          "street2": {
+            "type": "string",
+            "description": "Street, line 2."
+          },
+          "town": {
+            "type": "string",
+            "description": "Town or city.",
+            "example": "Porto"
+          },
+          "postcode": {
+            "type": "string",
+            "description": "Postcode.",
+            "example": "4000"
+          },
+          "postcodeTown": {
+            "type": "string",
+            "description": "Postcode town or city.",
+            "example": "Porto"
+          },
+          "provinceState": {
+            "type": "string",
+            "description": "Country subdivision (province, state, ...).",
+            "example": "Porto"
+          },
+          "country": {
+            "type": "string",
+            "description": "Country code.",
+            "example": "POR"
+          },
+          "countryName": {
+            "type": "string",
+            "description": "Country name.",
+            "example": "Portugal"
+          },
+          "attributes": {
+            "type": "array",
+            "description": "User-definable address attributes.",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.Attribute"
+            }
+          },
+          "street": {
+            "type": "string"
+          }
+        },
+        "description": "Address object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.Attribute": {
+        "type": "object",
+        "properties": {
+          "attrCode": {
+            "type": "string",
+            "description": "Attribute code.",
+            "example": "E001"
+          },
+          "attrValue": {
+            "type": "string",
+            "description": "Attribute value.",
+            "example": "Attribute"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "User-definable attributes object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.InsuredPerson": {
+        "required": [
+          "personData",
+          "relationship",
+          "startDate",
+          "sumInsured"
+        ],
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "integer",
+            "description": "Person id. Note: One of 'personId', 'insuredPersonId' or 'personData' must be indicated",
+            "format": "int32"
+          },
+          "insuredPersonId": {
+            "type": "integer",
+            "description": "Insured person id. Note: One of 'personId', 'insuredPersonId' or 'personData' must be indicated",
+            "format": "int32"
+          },
+          "personData": {
+            "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.PersonData"
+          },
+          "memberId": {
+            "type": "integer",
+            "description": "Member id. Note: If not specified, a new member will be created",
+            "format": "int32"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Type of relationship of this person as regards the insurance policy. Used only for group products."
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Policy member start date. Format: YYYYMMDD."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Policy member end date. Format: YYYYMMDD."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Policy member duration",
+            "format": "int32"
+          },
+          "sumInsured": {
+            "type": "number",
+            "description": "Policy member sum insured"
+          },
+          "coveragePackages": {
+            "type": "array",
+            "description": "List of coverage package ids",
+            "items": {
+              "type": "integer",
+              "description": "List of coverage package ids",
+              "format": "int32"
+            }
+          },
+          "coverages": {
+            "type": "array",
+            "description": "List of coverages",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Coverage"
+            }
+          },
+          "additionalValues": {
+            "type": "array",
+            "description": "List of additional values of the main coverage.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.AdditionalValues"
+            }
+          },
+          "additionalInfos": {
+            "type": "array",
+            "description": "List of additional information fields per product configuration.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.AdditionalInfos"
+            }
+          },
+          "beneficiaries": {
+            "type": "array",
+            "description": "List of beneficiaries of insured person",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.InsuredPersonBeneficiary"
+            }
+          },
+          "beneficiaryClauses": {
+            "type": "array",
+            "description": "List of beneficiaries clauses of insured person",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.BeneficiaryClause"
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "description": "List of provisions limiting the coverage from specific risks.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Exclusion"
+            }
+          }
+        },
+        "description": "Insured person object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.InsuredPersonBeneficiary": {
+        "required": [
+          "changeType",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "changeType": {
+            "type": "string",
+            "description": "Type of change.",
+            "example": "ADD",
+            "enum": [
+              "ADD",
+              "CHANGE",
+              "REMOVE"
+            ]
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Beneficiary's family relationship with the insured person.",
+            "example": "Brother"
+          },
+          "beneficiaryPersonId": {
+            "type": "integer",
+            "description": "Beneficiary PersonId.",
+            "format": "int32",
+            "example": 1
+          },
+          "beneficiaryId": {
+            "type": "integer",
+            "description": "Id of Beneficiary.",
+            "format": "int32",
+            "example": 1
+          },
+          "personData": {
+            "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.PersonData"
+          },
+          "type": {
+            "type": "string",
+            "description": "type of clause. Death, Life, Disability.",
+            "example": "DEATH",
+            "enum": [
+              "DEATH",
+              "LIFE",
+              "DISABILITY"
+            ]
+          },
+          "percent": {
+            "type": "number",
+            "description": "Percentage to be received by this beneficiary.\r\n\r\nNote: All percentages of the various beneficiaries of each type must total 100%.",
+            "example": 100
+          },
+          "coverageCode": {
+            "type": "integer",
+            "description": "Coverage Code.",
+            "format": "int32",
+            "example": 1
+          },
+          "irrevocable": {
+            "type": "boolean",
+            "description": "If specified, the beneficiary cannot be changed without his or her consent.",
+            "example": true
+          }
+        },
+        "description": "Beneficiary object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.PersonAttribute": {
+        "type": "object",
+        "properties": {
+          "fieldId": {
+            "type": "string",
+            "description": "Predefined id of a person attribute."
+          },
+          "context": {
+            "type": "string",
+            "description": "Attribute context (GENERAL, FATCA, CRS, ...).",
+            "example": "FATCA"
+          },
+          "contextCode": {
+            "type": "string",
+            "description": "Attribute context code."
+          },
+          "description": {
+            "type": "string",
+            "description": "Attribute description.",
+            "example": "Billing address"
+          },
+          "value": {
+            "type": "string",
+            "description": "Attribute value.",
+            "example": "111"
+          },
+          "valueDescription": {
+            "type": "string",
+            "description": "Attribute value description.",
+            "example": "111"
+          },
+          "address": {
+            "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.Address"
+          },
+          "sequence": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "Context-related user-definable party attributes.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.PersonData": {
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string"
+          },
+          "idDocumentType": {
+            "type": "string"
+          },
+          "idDocumentValue": {
+            "type": "string"
+          },
+          "partyUniqueId": {
+            "type": "string",
+            "description": "This parameter identifies and allows searching for a party.\nThis id will initially be generated by concatenating three other parameters:\nidDocumentType, idDocumentValue, and partyNationality.\n"
+          },
+          "name": {
+            "type": "string"
+          },
+          "birthDate": {
+            "type": "string"
+          },
+          "taxIdNo": {
+            "type": "string"
+          },
+          "idNo": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Party's gender, if a natural person.",
+            "enum": [
+              "Male",
+              "Female"
+            ]
+          },
+          "maritalStatus": {
+            "type": "string"
+          },
+          "profession": {
+            "type": "string"
+          },
+          "personBusiness": {
+            "type": "string"
+          },
+          "honorific": {
+            "type": "string"
+          },
+          "independentEntrepreneur": {
+            "type": "boolean"
+          },
+          "phoneNo": {
+            "type": "string"
+          },
+          "mobileNo": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "personAttributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.Attribute"
+            }
+          },
+          "contextAddressFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.PersonAttribute"
+            }
+          }
+        },
+        "description": "Person data object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.ExcludePersonRequest": {
+        "required": [
+          "branch",
+          "effectiveDate",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to exclude the insured person of a policy",
+            "format": "date-time"
+          },
+          "memberId": {
+            "type": "string",
+            "description": "Member Id. Note: If not specified, it will assume the memberId = 1"
+          },
+          "policyHolder": {
+            "type": "integer",
+            "description": "The ID of the new policy holder.",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string",
+            "description": "The status to change the insured person to.",
+            "enum": [
+              "EXCLUDED"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "description": "The reason why status changed."
+          },
+          "print": {
+            "type": "string",
+            "description": "The print indication.",
+            "enum": [
+              "N",
+              "I",
+              "B"
+            ]
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.aip.request.AddInsuredPersonUpdate": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "The status of the endorsement",
+            "enum": [
+              "PENDING",
+              "COMPLETED"
+            ]
+          }
+        }
+      },
+      "pt.i2s.psm.rs.beans.EntityResponsePt.i2s.psm.services.beans.aip.response.InsuredPersonResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          },
+          "data": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.response.InsuredPersonResponse"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.aip.entities.CoverageEntity": {
+        "required": [
+          "code",
+          "startDate"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Coverage code",
+            "format": "int32"
+          },
+          "sumInsured": {
+            "type": "number",
+            "description": "Coverage sum insured"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Coverage start date. Format: YYYYMMDD."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Coverage end date. Format: YYYYMMDD."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Coverage duration",
+            "format": "int32"
+          },
+          "indexationType": {
+            "type": "string",
+            "description": "Type of price adjustment of the coverage (None, Fixed monetary value or Percentage of increase).",
+            "enum": [
+              "NONE",
+              "MONETARY",
+              "PERCENTAGE"
+            ]
+          },
+          "indexation": {
+            "type": "number",
+            "description": "Price adjustment of the coverage in percentage or absolute value"
+          },
+          "additionalValues": {
+            "type": "array",
+            "description": "Additional values of coverages",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.AdditionalValues"
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "description": "List of provisions limiting the coverage from specific risks.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Exclusion"
+            }
+          },
+          "coverageReasons": {
+            "type": "array",
+            "description": "Loading reason for coverage",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.CoverageReason"
+            }
+          },
+          "percentage": {
+            "type": "number",
+            "description": "Loading percentage applicable to risk coverage (loadedCoverage)"
+          },
+          "perThousand": {
+            "type": "number",
+            "description": "Loading perThousand applicable to risk coverage (loadedCoverage)"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the coverage. This is used for history purposes.",
+            "enum": [
+              "ACTIVE",
+              "REMOVED"
+            ]
+          },
+          "paymentsDuration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lifeSumInsured": {
+            "type": "number"
+          },
+          "deathSumInsured": {
+            "type": "number"
+          },
+          "loadingCoverageReason": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "CoverageEntity object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.aip.request.UpdateInsuredPersonRequest": {
+        "required": [
+          "startDate",
+          "sumInsured"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "The status of the person",
+            "enum": [
+              "PENDING",
+              "ACCEPTED",
+              "REFUSED",
+              "CANCELED",
+              "INTEGRATING",
+              "INTEGRATION_ERROR"
+            ]
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Policy member start date. Format: YYYYMMDD."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Policy member end date. Format: YYYYMMDD."
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Policy member duration",
+            "format": "int32"
+          },
+          "sumInsured": {
+            "type": "number",
+            "description": "Policy member sum insured"
+          },
+          "coverages": {
+            "type": "array",
+            "description": "List of coverages",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.entities.CoverageEntity"
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "description": "List of provisions limiting the coverage from specific risks.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Exclusion"
+            }
+          }
+        },
+        "description": "InsuredPerson update object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.updatebeneficiaries.BeneficiaryClause": {
+        "required": [
+          "changeType",
+          "code",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "changeType": {
+            "type": "string",
+            "description": "Type of change.",
+            "example": "ADD",
+            "enum": [
+              "ADD",
+              "REMOVE"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "description": "type of clause. Death, Life, Disability, Global.",
+            "example": "DEATH",
+            "enum": [
+              "DEATH",
+              "LIFE",
+              "DISABILITY",
+              "GLOBAL"
+            ]
+          },
+          "code": {
+            "type": "integer",
+            "description": "Code identifying the clause",
+            "format": "int32",
+            "example": 12
+          },
+          "coverageCode": {
+            "type": "integer",
+            "description": "Coverage Code",
+            "format": "int32",
+            "example": 12
+          }
+        },
+        "description": "Beneficiaries Clauses  object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.InsuredPersonBeneficiaryRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to exclude the insured person of a policy.",
+            "format": "date-time"
+          },
+          "beneficiariesClauses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.updatebeneficiaries.BeneficiaryClause"
+            }
+          },
+          "beneficiaries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.InsuredPersonBeneficiary"
+            }
+          }
+        },
+        "description": "Insured person beneficiary endorsement object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.UpdatePersonSumInsuredRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "loginUser",
+          "productCode",
+          "type",
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to exclude the insured person of a policy",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of update on sum insured of the policy",
+            "enum": [
+              "PERCENTAGE",
+              "SUM_INSURED"
+            ]
+          },
+          "values": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "description": "Map containing variables related with the type of update to be made"
+            },
+            "description": "Map containing variables related with the type of update to be made"
+          },
+          "memberId": {
+            "type": "string",
+            "description": "Member Id. Note: If not specified, it will assume the memberId = 1"
+          }
+        }
+      },
+      "pt.inetum.cleva.psm.services.beans.multichange.AdditionalValue": {
+        "required": [
+          "id",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Identifier of the additional value.",
+            "format": "int32"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Contract year to which the additional value applies.",
+            "format": "int32"
+          },
+          "value": {
+            "type": "number",
+            "description": "Additional value's value."
+          }
+        },
+        "description": "Additional values to add/change in the coverage. For the loading coverages, the additional value includes the percentage/per thousand of the loading."
+      },
+      "pt.inetum.cleva.psm.services.beans.multichange.CoverageChange": {
+        "required": [
+          "changeType",
+          "coverageId",
+          "startDate"
+        ],
+        "type": "object",
+        "properties": {
+          "changeType": {
+            "$ref": "#/components/schemas/pt.inetum.life.pas.multi.endorsement.v3.enums.ChangeTypeEnum"
+          },
+          "coverageId": {
+            "type": "integer",
+            "description": "The coverage to be added/removed/changed.",
+            "format": "int32"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "Date from which the coverage addition/changes should take effect.",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "Date from which the coverage addition/changes should end.",
+            "format": "date"
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Duration of the coverage in the contract (years or months according to the configurations).",
+            "format": "int32"
+          },
+          "paymentsDuration": {
+            "type": "integer",
+            "description": "Duration of the coverage's payment (years or months according to the configurations).",
+            "format": "int32"
+          },
+          "lifeSumInsured": {
+            "type": "number",
+            "description": "The coverage's sum insured value (applicable, according to configuration, to life products like Universal life 7700)."
+          },
+          "deathSumInsured": {
+            "type": "number",
+            "description": "The coverage's sum insured value (applicable to coverages in case of death like risk products)."
+          },
+          "indexationType": {
+            "type": "string",
+            "description": "The types of indexation to consider for the coverage.",
+            "enum": [
+              "NONE",
+              "MONETARY",
+              "PERCENTAGE",
+              "NONE",
+              "MONETARY",
+              "PERCENTAGE"
+            ]
+          },
+          "indexation": {
+            "type": "number",
+            "description": "Price adjustment in percentage or monetary value."
+          },
+          "loadingCoverageReason": {
+            "type": "integer",
+            "description": "Identifier of the reason for a loading coverage",
+            "format": "int32"
+          },
+          "additionalValues": {
+            "type": "array",
+            "description": "Additional values to add/change in the coverage. For the loading coverages, the additional value includes the percentage/per thousand of the loading.",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.AdditionalValue"
+            }
+          }
+        },
+        "description": "Policy coverage changes object."
+      },
+      "pt.inetum.cleva.psm.services.beans.multichange.FamilyChange": {
+        "required": [
+          "changeType",
+          "coverageId"
+        ],
+        "type": "object",
+        "properties": {
+          "changeType": {
+            "$ref": "#/components/schemas/pt.inetum.life.pas.multi.endorsement.v3.enums.ChangeTypeEnum"
+          },
+          "familyMemberSequence": {
+            "type": "integer",
+            "description": "The sequential number of the family member. When adding a new member, the code will generate it automatically. When removing or changing a member, it must be indicated in the payload (the same family member may have two different family member sequences in order to have different family-specific coverages associated).",
+            "format": "int32"
+          },
+          "coverageId": {
+            "type": "integer",
+            "description": "The coverage associated to the family member.",
+            "format": "int32"
+          },
+          "familyMemberPersonId": {
+            "type": "integer",
+            "description": "The person's unique identifier.",
+            "format": "int32"
+          },
+          "familyMemberId": {
+            "type": "integer",
+            "description": "The person's unique identifier for the role.",
+            "format": "int32"
+          },
+          "familyMemberPersonData": {
+            "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.PersonData"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "The relationship between the family member and the insured person."
+          }
+        },
+        "description": "Policy family changes object."
+      },
+      "pt.inetum.cleva.psm.services.beans.multichange.MemberPersonChange": {
+        "type": "object",
+        "properties": {
+          "insuredPersonSequence": {
+            "type": "integer",
+            "description": "The sequential number of the insured person. When adding a new member, the code will generate it automatically. When removing or changing a member, it must be indicated in the payload.",
+            "format": "int32"
+          },
+          "insuredPersonId": {
+            "type": "integer",
+            "description": "The person's unique identifier.",
+            "format": "int32",
+            "example": 123126
+          },
+          "coveragesChange": {
+            "type": "array",
+            "description": "The list of coverages to be added, removed or changed (excluding the main coverage).",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.CoverageChange"
+            }
+          }
+        },
+        "description": "Policy member person changes object."
+      },
+      "pt.inetum.cleva.psm.services.beans.multichange.PersonAddressAttribute": {
+        "type": "object",
+        "properties": {
+          "fieldId": {
+            "type": "string",
+            "description": "Predefined id of a person attribute."
+          },
+          "context": {
+            "type": "string",
+            "description": "Attribute context",
+            "example": "GENERAL"
+          },
+          "contextCode": {
+            "type": "string",
+            "description": "Attribute context code."
+          },
+          "address": {
+            "$ref": "#/components/schemas/pt.i2s.psm.services.beans.aip.request.Address"
+          },
+          "value": {
+            "type": "string",
+            "description": "The attribute's value."
+          },
+          "sequence": {
+            "type": "integer",
+            "description": "The attribute's sequence.",
+            "format": "int32"
+          }
+        },
+        "description": "Context-related user-definable party address attributes."
+      },
+      "pt.inetum.cleva.psm.services.beans.multichange.PersonAttribute": {
+        "required": [
+          "id",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The person attribute's identifier."
+          },
+          "value": {
+            "type": "string",
+            "description": "The attribute's value."
+          },
+          "sequence": {
+            "type": "integer",
+            "description": "The attribute's sequence.",
+            "format": "int32"
+          }
+        },
+        "description": "Context-related user-definable party attributes."
+      },
+      "pt.inetum.cleva.psm.services.beans.multichange.PersonData": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Party's name."
+          },
+          "externalId": {
+            "type": "string",
+            "description": "Party's external reference."
+          },
+          "taxIdNo": {
+            "type": "string",
+            "description": "Party's tax identification number."
+          },
+          "idNo": {
+            "type": "string",
+            "description": "Party's national identifier (or equivalent)."
+          },
+          "idDocumentType": {
+            "type": "string",
+            "description": "The identification type (i.e. NIF, Passport, DNI,...)"
+          },
+          "idDocumentValue": {
+            "type": "string",
+            "description": "The number of the identification document."
+          },
+          "partyUniqueId": {
+            "type": "string",
+            "description": "The party's unique identifier"
+          },
+          "birthDate": {
+            "type": "string",
+            "description": "Party's birth date.",
+            "format": "date"
+          },
+          "personBusiness": {
+            "type": "string",
+            "description": "The party type code (natural person or company)."
+          },
+          "gender": {
+            "type": "string",
+            "description": "Code identifying the party's gender."
+          },
+          "independentEntrepreneur": {
+            "type": "boolean"
+          },
+          "honorific": {
+            "type": "string"
+          },
+          "maritalStatus": {
+            "type": "string",
+            "description": "Code identifying the marital status of the person."
+          },
+          "phoneNo": {
+            "type": "string",
+            "description": "Party's telephone number."
+          },
+          "mobileNo": {
+            "type": "string",
+            "description": "Party's mobile number."
+          },
+          "email": {
+            "type": "string",
+            "description": "Party's email address."
+          },
+          "nationality": {
+            "type": "string",
+            "description": "Country code representing the party's nationality."
+          },
+          "profession": {
+            "type": "string",
+            "description": "Code identifying the party's occupation, if a natural person."
+          },
+          "personAttributes": {
+            "type": "array",
+            "description": "Party's additional attributes.",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.PersonAttribute"
+            }
+          },
+          "contextAddressFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.PersonAddressAttribute"
+            }
+          }
+        },
+        "description": "Policy person data object."
+      },
+      "pt.inetum.cleva.psm.services.beans.multichange.PolicyMultipleChangesRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "loginUser",
+          "productId"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productId": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Date from which the policy's changes should take effect.",
+            "format": "date",
+            "example": "2019-05-17"
+          },
+          "print": {
+            "type": "string",
+            "description": "Indication to either print or not the change performed.",
+            "enum": [
+              "N",
+              "I",
+              "B",
+              "NO_PRINTING, IMMEDIATE_PRINTING, BATCH_PRINTING"
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "description": "The currency in the product configuration.",
+            "example": "EUR"
+          },
+          "coveragesChange": {
+            "type": "array",
+            "description": "The request's structure indicating the coverages' changes.",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.CoverageChange"
+            }
+          },
+          "familyChange": {
+            "type": "array",
+            "description": "The request's structure indicating the family's changes.",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.FamilyChange"
+            }
+          },
+          "memberPersonChanges": {
+            "type": "array",
+            "description": "The request's structure indicating the member persons' changes.",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.multichange.MemberPersonChange"
+            }
+          }
+        },
+        "description": "Policy multiple changes request object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.life.pas.multi.endorsement.v3.enums.ChangeTypeEnum": {
+        "type": "string",
+        "description": "The type of change to be performed.",
+        "enum": [
+          "ADD",
+          "CHANGE",
+          "REMOVE",
+          "ADD",
+          "REMOVE",
+          "CHANGE"
+        ]
+      },
+      "pt.inetum.cleva.psm.services.beans.UpdateNoticeAddressRequest": {
+        "required": [
+          "branch",
+          "countryCode",
+          "forChannel",
+          "loginUser",
+          "postalCode",
+          "productCode",
+          "street",
+          "town"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to exclude the insured person of a policy",
+            "format": "date-time"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "The country code of address to update"
+          },
+          "street": {
+            "type": "string",
+            "description": "Name of main street"
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "The postal code of the street"
+          },
+          "postalCodeTown": {
+            "type": "string",
+            "description": "The town of postal code"
+          },
+          "town": {
+            "type": "string",
+            "description": "The town"
+          }
+        },
+        "description": "Update notice address endorsement object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.i2s.psm.services.beans.CancelPolicyRequest": {
+        "required": [
+          "branch",
+          "effectiveDate",
+          "forChannel",
+          "loginUser",
+          "productCode",
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to exclude the insured person of a policy",
+            "format": "date-time"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Reason to cancel the policy"
+          },
+          "cancelReceipts": {
+            "type": "boolean",
+            "description": "Indicates if the receipts also have to be canceled alongside the policy"
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.AdditionalValue": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code identifying the additional value."
+          },
+          "value": {
+            "type": "string",
+            "description": "    Information value.\n    Note: It is the same field used for indicating the value of short and long additional information fields.\n    The size must match the information type (short additional information = 8 characters, long additional information = 30 characters).\n"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "Main coverage's additional values."
+      },
+      "pt.inetum.cleva.psm.services.beans.UpdateSumInsuredRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to update the new sum insured.",
+            "format": "date-time"
+          },
+          "lifeSumInsured": {
+            "type": "number",
+            "description": "Life sum insured."
+          },
+          "deathSumInsured": {
+            "type": "number",
+            "description": "Death sum insured."
+          },
+          "additionalValues": {
+            "type": "array",
+            "description": "Main coverage's additional values.",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.AdditionalValue"
+            }
+          },
+          "premium": {
+            "type": "number",
+            "description": "Premium to be paid."
+          },
+          "changeOrigin": {
+            "type": "string",
+            "description": "Origin of the change. CHANGE - Sum insured change requested (default value), UPDATE - Sum insured regular update.",
+            "enum": [
+              "  ",
+              "02"
+            ]
+          },
+          "print": {
+            "type": "string",
+            "description": "The print indication.",
+            "enum": [
+              "N",
+              "I",
+              "B"
+            ]
+          }
+        }
+      },
+      "pt.i2s.psm.services.beans.Clause": {
+        "required": [
+          "code",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Type of clause.\r\n\r\nM: Death.\r\n\r\nV: Life.\r\n\r\nI: Disability.\r\n\r\nG: Global.",
+            "example": "V",
+            "enum": [
+              "M",
+              "V",
+              "I",
+              "G"
+            ]
+          },
+          "code": {
+            "type": "string",
+            "description": "Code identifying the clause.",
+            "example": "21"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the clause."
+          },
+          "clauseClass": {
+            "type": "string",
+            "description": "This attribute allows defining the class of this clause.\r\n\r\n0: Not characterized.\r\n\r\n1: Mortgage company or priority beneficiary designation.",
+            "example": "00",
+            "enum": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        "description": "Beneficiary clause object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.Beneficiary": {
+        "required": [
+          "beneficiaryNumber",
+          "percent",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "beneficiaryNumber": {
+            "type": "integer",
+            "description": "Beneficiary number.\r\n\r\nNumbering must be sequential.",
+            "format": "int32",
+            "example": 1
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of beneficiary.\r\n\r\nM: Death.\r\n\r\nV: Life.\r\n\r\nI: Disability.",
+            "example": "I",
+            "enum": [
+              "M",
+              "V",
+              "I"
+            ]
+          },
+          "percent": {
+            "type": "number",
+            "description": "Percentage to be received by this beneficiary.\r\n\r\nNote: All percentages of the various beneficiaries of each type must total 100%.",
+            "example": 100
+          },
+          "remarks": {
+            "type": "string",
+            "description": "Free text field for any remarks pertaining to the beneficiary.",
+            "example": "A remark."
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Beneficiary's family relationship with the insured person.",
+            "example": "Brother"
+          },
+          "irrevocable": {
+            "type": "string",
+            "description": "If specified, the beneficiary cannot be changed without his or her consent.\r\n\r\nAlso, if specified, the value must be '1'.\r\n\r\nThe same beneficiary cannot be specified simultaneously as annuitant and irrevocable.",
+            "example": "1"
+          },
+          "annuitant": {
+            "type": "string",
+            "description": "If specified, the beneficiary is an annuitant in an annuity insurance. To be used only when type is 'V Life'.\r\n\r\nAlso, if specified, the value must be '1'.\r\n\r\nThe same beneficiary cannot be specified simultaneously as annuitant and irrevocable.",
+            "example": "1"
+          },
+          "annuitantIncomeTaxNoDependents": {
+            "type": "integer",
+            "description": "Number of dependents of the annuitant according to income tax laws.\r\n\r\nNote: To be used only when the beneficiary is an annuitant.",
+            "format": "int32"
+          },
+          "annuitantIncomeTaxNoTaxpayers": {
+            "type": "string",
+            "description": "Code identifying the 'number of taxpayers' income tax status of the annuitant.\r\n\r\nNote: To be used only when the beneficiary is an annuitant."
+          },
+          "annuitantIncomeTaxSituation": {
+            "type": "string",
+            "description": "Code identifying the type of income tax situation of the annuitant.\r\n\r\nNote: To be used only when the beneficiary is an annuitant."
+          },
+          "person": {
+            "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.Person"
+          }
+        },
+        "description": "Beneficiary object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.BeneficiaryEndorsementRequest": {
+        "required": [
+          "branch",
+          "forChannel",
+          "loginUser",
+          "productCode"
+        ],
+        "type": "object",
+        "properties": {
+          "forChannel": {
+            "type": "string",
+            "description": "The channel where the policy was created"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Id of the request"
+          },
+          "loginUser": {
+            "type": "string",
+            "description": "Login user to request the change"
+          },
+          "branch": {
+            "type": "string",
+            "description": "Id of the branch where the change request was made"
+          },
+          "company": {
+            "type": "string",
+            "description": "Id of the legal entity"
+          },
+          "byChannelApp": {
+            "type": "string",
+            "description": "Id of the application being used in the channel where the request was created"
+          },
+          "productCode": {
+            "type": "string",
+            "description": "Product's code"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "description": "Effective date to update beneficiaries and beneficiaries clauses.",
+            "format": "date-time"
+          },
+          "beneficiaries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.Beneficiary"
+            }
+          },
+          "beneficiaryClauses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pt.i2s.psm.services.beans.Clause"
+            }
+          }
+        },
+        "description": "Beneficiary endorsement object.\r\n\r\nThe data included in the object is the following."
+      },
+      "pt.inetum.cleva.psm.services.beans.Person": {
+        "required": [
+          "name",
+          "personBusiness"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Party's name.",
+            "example": "Ana Silva"
+          },
+          "personId": {
+            "type": "string",
+            "description": "Party's unique identification number.\r\n\r\nNote: It may be used to retrieve the policyholder's policies.",
+            "example": "274635"
+          },
+          "idDocumentType": {
+            "type": "string",
+            "description": "This parameter specifies the type of id document of a party.\nWhen creating a party, this parameter is mandatory,\nand together with the idDocumentValue and partyNationality parameters will generate the partyUniqueId parameter which will later allow searching for a party.\n"
+          },
+          "idDocumentValue": {
+            "type": "string",
+            "description": "This parameter specifies the party's id document value.\nWhen creating a party, this parameter is mandatory,\nand together with the partyNationality and idDocumentType parameters will generate the partyUniqueId parameter which will later allow searching for a party.\n"
+          },
+          "partyUniqueId": {
+            "type": "string",
+            "description": "This parameter identifies and allows searching for a party.\nThis id will initially be generated by concatenating three other parameters:\nidDocumentType, idDocumentValue, and partyNationality.\n"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "Party's external reference.",
+            "example": "927"
+          },
+          "taxIdNo": {
+            "type": "string",
+            "description": "Party's tax identification number (TIN).",
+            "example": "159459206"
+          },
+          "idNo": {
+            "type": "string",
+            "description": "Party's national identification number (or equivalent).",
+            "example": "12345678"
+          },
+          "birthDate": {
+            "type": "string",
+            "description": "Party's date of birth. Format: YYYYMMDD.",
+            "example": "19670101"
+          },
+          "personBusiness": {
+            "type": "string",
+            "description": "Code identifying whether the party is a natural or a legal person.\r\n\r\nI: Natural person.\r\n\r\nC: Legal person.",
+            "example": "I",
+            "enum": [
+              "I",
+              "C"
+            ]
+          },
+          "personBusinessDescription": {
+            "type": "string",
+            "description": "Description of the party as a natural or a legal person.",
+            "example": "Individual"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Party's gender, if a natural person.\r\n\r\nM: Male.\r\n\r\nF: Female.",
+            "example": "F",
+            "enum": [
+              "M",
+              "F"
+            ]
+          },
+          "genderDescription": {
+            "type": "string",
+            "description": "Description of the party's gender, if a natural person.",
+            "example": "Feminino"
+          },
+          "independentEntrepreneur": {
+            "type": "boolean",
+            "description": "Indication if this party is a sole trader.",
+            "example": false,
+            "enum": [
+              true,
+              false
+            ]
+          },
+          "honorific": {
+            "type": "string",
+            "description": "Party's title, if a natural person.",
+            "example": "Mrs",
+            "enum": [
+              "Mr",
+              "Mrs",
+              "Doctor",
+              "..."
+            ]
+          },
+          "maritalStatus": {
+            "type": "string",
+            "description": "Code identifying the marital status of the party, if a natural person.",
+            "example": "S"
+          },
+          "maritalStatusDescription": {
+            "type": "string",
+            "description": "Description of the marital status of the party, if a natural person.",
+            "example": "Solteiro(a)"
+          },
+          "phoneNo": {
+            "type": "string",
+            "description": "Party's telephone number.",
+            "example": "910000000"
+          },
+          "mobileNo": {
+            "type": "string",
+            "description": "Party's mobile number.",
+            "example": "910000000"
+          },
+          "email": {
+            "type": "string",
+            "description": "Party's email address.",
+            "example": "anasilva@example.pt"
+          },
+          "nationality": {
+            "type": "string",
+            "description": "Party's country code (nationality).",
+            "example": "POR"
+          },
+          "nationalityDescription": {
+            "type": "string",
+            "description": "Description of the party's country (nationality).",
+            "example": "Portugal"
+          },
+          "profession": {
+            "type": "string",
+            "description": "Code identifying the party's occupation, if a natural person.\r\n\r\nNote: This field is mandatory, but it may be empty.",
+            "example": "4290"
+          },
+          "professionDescription": {
+            "type": "string",
+            "description": "Description of the party's occupation, if a natural person.",
+            "example": "Informático"
+          },
+          "retirementAge": {
+            "type": "string",
+            "description": "Age of retirement, if a natural person.",
+            "example": "65"
+          },
+          "personAttributes": {
+            "type": "array",
+            "description": "User-definable party attributes.",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.Attribute"
+            }
+          },
+          "fatcaSubject": {
+            "type": "string",
+            "description": "Party is subject to FATCA reporting.\r\n\r\n0: No.\r\n\r\n1: Yes.\r\n\r\n2: Unspecified.",
+            "example": "1"
+          },
+          "crsSubject": {
+            "type": "string",
+            "description": "Party is subject to CRS reporting.\r\n\r\n0: No.\r\n\r\n1: Yes.\r\n\r\n2: Unspecified.",
+            "example": "1"
+          },
+          "contextPersonFields": {
+            "type": "array",
+            "description": "Context-related user-definable party information attributes.\r\n\r\nNote: To be used only when a context is specified (FATCA, CRS, ...).",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.PersonAttribute"
+            }
+          },
+          "contextAddressFields": {
+            "type": "array",
+            "description": "Context-related user-definable party address attributes.\r\n\r\nNote: To be used only when a context is specified (GENERAL, FATCA, CRS, ...).",
+            "items": {
+              "$ref": "#/components/schemas/pt.inetum.cleva.psm.services.beans.PersonAttribute"
+            }
+          }
+        }
+      },
+      "pt.inetum.foundation.api.management.cache.beans.CacheManagerListResponse": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/com.i2s.foundation.ws.beans.I2SStatus"
+          },
+          "cacheNames": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
